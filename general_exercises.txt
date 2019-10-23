@@ -1,0 +1,60 @@
+1. Assess your knowledge level on the following languages (1 = none; 5 = expert):
+
+* Vanilla JS - 4.5
+* jQuery - 3.5
+* HTML/HTML5 - 5
+* CSS/CSS3 - 5
+* Ajax - 4
+* AngularJS - 4
+* Bootstrap - 4
+
+2. What is the width of a container with 100px of width and 5px of padding?
+Ans: 
+    Width of the container will be 110px because
+        width of the container = width of the content + left side padding + right side padding;
+                               = 100px + 5px + 5px;
+                               = 110px; 
+
+3. How to apply a click event to all paragraphs except for the last?
+Ans: 
+    JavaScript Solution:
+    -------------------
+        var pElemsWithoutLastOne = document.querySelectorAll('p:not(:last-child)');
+        for(var i = 0; i< pElemsWithoutLastOne.length; i++){
+            pElemsWithoutLastOne[i].addEventListener('click', function() {
+                alert('clicked');
+            });
+        }
+
+    JQuery Solotion:
+    ---------------
+        This can be done in two ways in jQuery
+        
+        First way, using .not() selector with :last to filter out last element
+        $('p').not(':last').on('click', function() { alert('clicked'); });
+
+        $('p:not(:last)').on('click', function() { alert('clicked'); });
+
+4. Why does the alert show "Jack" first and then undefined?
+
+function identity() {
+    var name = 'Jack';
+    alert(name);
+    return
+    name
+};
+
+var who = identity();
+alert(who)
+
+Ans:
+
+    * First identity method gets called.
+    * When identity function gets called:
+        1. Creates a local variable "name" and asigns a value "Jack" to it.
+        2. Alert gets displayed with text "Jack". (because name is a local variable here and it has a value)
+        3. It will return undefined here because after return there is no expression.
+        (Note: Return will return whatever expression value which is there after it. If omited, undefined is returned instead)
+        (NOTE: In JavaScript functions, statements after return statement won't gets executed.)
+    * Now undefined will be assigned to variable "who".
+    * Finally alert gets displayed with the text undefined.
